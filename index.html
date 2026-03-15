@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our 3 Years Wrapped</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500&family=Montserrat:wght@600;700;800;900&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Kaleidoscope background -->
+  <canvas id="kaleidoscope" aria-hidden="true"></canvas>
+
+  <!-- Loading: Terminal Boot -->
+  <div id="loading-screen">
+    <div class="loading-content terminal-font">
+      <div class="terminal-line" data-text="> Booting RelationshipOS v3.0..."></div>
+      <div class="terminal-line" data-text="> Running compatibility scan......... 100%"></div>
+      <div class="terminal-line warning" data-text="> WARNING: Excessive food consumption detected"></div>
+      <div class="terminal-line" data-text="> Love level: [||||||||||||] OVERLOAD"></div>
+      <div class="terminal-line" data-text="> Generating report..."></div>
+    </div>
+    <div class="terminal-cursor" aria-hidden="true"></div>
+    <div class="loading-explode" aria-hidden="true"></div>
+  </div>
+
+  <!-- Progress bar -->
+  <div class="progress-bar" id="progress-bar" aria-hidden="true">
+    <div class="progress-fill" id="progress-fill"></div>
+  </div>
+
+  <div id="fullpage">
+
+    <!-- 1. Title -->
+    <div class="section slide-section">
+      <div class="slide-content">
+        <h1 class="headline title-main">Our 3 years wrap is ready</h1>
+        <p class="subtitle">Your relationship data has been compiled.<br>Scroll at your own risk.</p>
+        <p class="tap-prompt">Scroll to start</p>
+      </div>
+    </div>
+
+    <!-- 2. Days counter -->
+    <div class="section slide-section">
+      <div class="slide-content">
+        <p class="stat-label">Current streak:</p>
+        <span id="days-counter" class="counter-huge">0</span>
+        <p class="days-label">days together</p>
+      </div>
+      <div class="burst-container" id="days-burst"></div>
+    </div>
+
+    <!-- 3. Food dashboard -->
+    <div class="section slide-section">
+      <div class="slide-content">
+        <h2 class="title">Eating</h2>
+        <div class="dashboard-stats">
+          <div class="dash-stat"><span class="dash-num">900+</span><span class="dash-desc">meals together</span></div>
+          <div class="dash-stat"><span class="dash-num">6+</span><span class="dash-desc">Michelin guide visits</span></div>
+          <div class="dash-stat"><span class="dash-num">∞</span><span class="dash-desc">food coma incidents</span></div>
+        </div>
+        <div class="photo-grid photo-grid-4x3" id="eat-grid">
+          <div class="photo-cell food-card" data-caption="A meal together"><img src="assets/photos/food1.jpg" alt="Eating" loading="lazy"></div>
+          <div class="photo-cell food-card" data-caption="Good times"><img src="assets/photos/food2.jpg" alt="Eating" loading="lazy"></div>
+          <div class="photo-cell food-card" data-caption="Food adventure"><img src="assets/photos/food3.jpg" alt="Eating" loading="lazy"></div>
+          <div class="photo-cell food-card" data-caption="Dinner"><img src="assets/photos/food4.jpg" alt="Eating" loading="lazy"></div>
+          <div class="photo-cell food-card" data-caption="Yum"><img src="assets/photos/food5.jpg" alt="Eating" loading="lazy"></div>
+          <div class="photo-cell food-card" data-caption="Together"><img src="assets/photos/food6.jpg" alt="Eating" loading="lazy"></div>
+          <div class="photo-cell food-card" data-caption="Meal"><img src="assets/photos/food7.jpg" alt="Eating" loading="lazy"></div>
+          <div class="photo-cell food-card" data-caption="Eating"><img src="assets/photos/food8.jpg" alt="Eating" loading="lazy"></div>
+          <div class="photo-cell food-card" data-caption="Food"><img src="assets/photos/food9.jpg" alt="Eating" loading="lazy"></div>
+          <div class="photo-cell food-card" data-caption="Date"><img src="assets/photos/food10.jpg" alt="Eating" loading="lazy"></div>
+          <div class="photo-cell food-card" data-caption="Memory"><img src="assets/photos/food11.jpg" alt="Eating" loading="lazy"></div>
+          <div class="photo-cell food-card" data-caption="Us"><img src="assets/photos/food12.jpg" alt="Eating" loading="lazy"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Walking -->
+    <div class="section slide-section">
+      <div class="slide-content">
+        <p class="body-text">Recommended daily steps: <strong>10,000</strong></p>
+        <div class="walking-icon" aria-hidden="true">🚶</div>
+      </div>
+    </div>
+
+    <!-- 5. Travel distance -->
+    <div class="section slide-section">
+      <div class="slide-content">
+        <p class="body-text">In 3 years, we've traveled together</p>
+        <p class="body-text"><span id="km-counter" class="counter big">0</span></p>
+        <p class="body-text km-label">kilometers</p>
+        <p class="joke-stat travel-joke">Airline loyalty tier: Gold (in our hearts)</p>
+        <div class="travel-viz">
+          <svg class="travel-path-svg" viewBox="0 0 400 120" aria-hidden="true">
+            <path class="travel-path" id="travel-path" d="M 20 60 Q 100 20 180 60 T 340 60 T 380 60" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="600" stroke-dashoffset="600"/>
+            <circle class="travel-dot" cx="20" cy="60" r="6"/>
+            <circle class="travel-dot" cx="100" cy="30" r="5"/>
+            <circle class="travel-dot" cx="180" cy="60" r="5"/>
+            <circle class="travel-dot" cx="260" cy="90" r="5"/>
+            <circle class="travel-dot" cx="340" cy="60" r="5"/>
+            <circle class="travel-dot" cx="380" cy="60" r="6"/>
+          </svg>
+        </div>
+        <p class="joke-stat travel-joke-bottom">Luggage lost: 0. Arguments about directions: don't remember.</p>
+      </div>
+    </div>
+
+    <!-- 6. Jeju -->
+    <div class="section slide-section">
+      <div class="slide-content">
+        <p class="body-text multi">Our first trip together<br>was Jeju</p>
+        <p class="body-text sub">And we never stopped there</p>
+        <div class="photo-single photo-zoom photo-tappable" data-caption="Jeju — Our first trip">
+          <img src="assets/photos/trip_jeju.jpg" alt="Jeju" loading="lazy">
+        </div>
+      </div>
+    </div>. 
+
+    <!-- 7. Places — infinite trip strip -->
+    <div class="section slide-section">
+      <div class="slide-content">
+        <h2 class="title">Places we've been together</h2>
+        <div class="trip-scroll-wrap" id="trip-scroll">
+          <div class="trip-scroll-track">
+            <div class="trip-card photo-tappable" data-caption="Trip"><img src="assets/photos/trip1.jpg" alt="Trip" loading="lazy"></div>
+            <div class="trip-card photo-tappable" data-caption="Trip"><img src="assets/photos/trip2.jpg" alt="Trip" loading="lazy"></div>
+            <div class="trip-card photo-tappable" data-caption="Trip"><img src="assets/photos/trip3.jpg" alt="Trip" loading="lazy"></div>
+            <div class="trip-card photo-tappable" data-caption="Trip"><img src="assets/photos/trip4.jpg" alt="Trip" loading="lazy"></div>
+            <div class="trip-card photo-tappable" data-caption="Trip"><img src="assets/photos/trip5.jpg" alt="Trip" loading="lazy"></div>
+            <div class="trip-card photo-tappable" data-caption="Trip"><img src="assets/photos/trip6.jpg" alt="Trip" loading="lazy"></div>
+            <div class="trip-card photo-tappable" data-caption="Trip"><img src="assets/photos/trip7.jpg" alt="Trip" loading="lazy"></div>
+            <div class="trip-card photo-tappable" data-caption="Trip"><img src="assets/photos/trip9.jpg" alt="Trip" loading="lazy"></div>
+            <div class="trip-card photo-tappable" data-caption="Trip"><img src="assets/photos/trip10.jpg" alt="Trip" loading="lazy"></div>
+            <div class="trip-card photo-tappable" data-caption="Trip"><img src="assets/photos/trip11.jpg" alt="Trip" loading="lazy"></div>
+            <div class="trip-card photo-tappable" data-caption="Trip"><img src="assets/photos/trip12.jpg" alt="Trip" loading="lazy"></div>
+            <div class="trip-card photo-tappable" data-caption="Trip"><img src="assets/photos/trip13.jpg" alt="Trip" loading="lazy"></div>
+            <!-- duplicate set for seamless loop -->
+            <div class="trip-card photo-tappable" data-caption="Trip"><img src="assets/photos/trip1.jpg" alt="Trip" loading="lazy"></div>
+            <div class="trip-card photo-tappable" data-caption="Trip"><img src="assets/photos/trip2.jpg" alt="Trip" loading="lazy"></div>
+            <div class="trip-card photo-tappable" data-caption="Trip"><img src="assets/photos/trip3.jpg" alt="Trip" loading="lazy"></div>
+            <div class="trip-card photo-tappable" data-caption="Trip"><img src="assets/photos/trip4.jpg" alt="Trip" loading="lazy"></div>
+            <div class="trip-card photo-tappable" data-caption="Trip"><img src="assets/photos/trip5.jpg" alt="Trip" loading="lazy"></div>
+            <div class="trip-card photo-tappable" data-caption="Trip"><img src="assets/photos/trip6.jpg" alt="Trip" loading="lazy"></div>
+            <div class="trip-card photo-tappable" data-caption="Trip"><img src="assets/photos/trip7.jpg" alt="Trip" loading="lazy"></div>
+            <div class="trip-card photo-tappable" data-caption="Trip"><img src="assets/photos/trip9.jpg" alt="Trip" loading="lazy"></div>
+            <div class="trip-card photo-tappable" data-caption="Trip"><img src="assets/photos/trip10.jpg" alt="Trip" loading="lazy"></div>
+            <div class="trip-card photo-tappable" data-caption="Trip"><img src="assets/photos/trip11.jpg" alt="Trip" loading="lazy"></div>
+            <div class="trip-card photo-tappable" data-caption="Trip"><img src="assets/photos/trip12.jpg" alt="Trip" loading="lazy"></div>
+            <div class="trip-card photo-tappable" data-caption="Trip"><img src="assets/photos/trip13.jpg" alt="Trip" loading="lazy"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8. Travel with you -->
+    <div class="section slide-section slide-with-bg">
+      <div class="slide-bg" style="background-image: url('assets/photos/travel.jpg')"></div>
+      <div class="slide-content overlay">
+        <p class="body-text white">It's always exciting<br>to travel with you</p>
+      </div>
+    </div>
+
+    <!-- 9. Let's rate our date -->
+    <div class="section slide-section">
+      <div class="slide-content">
+        <p class="body-text rate-intro-text">Let's rate our date</p>
+      </div>
+    </div>
+
+    <!-- 10. Overrated — Flair -->
+    <div class="section slide-section">
+      <div class="slide-content">
+        <div class="yelp-card">
+          <div class="yelp-badge">VERIFIED REVIEW</div>
+          <p class="ranking-badge">#1 Most Overrated Date</p>
+          <h2 class="title yelp-title">Flair</h2>
+          <div class="star-rating" data-stars="2.5" aria-label="2.5 out of 5 stars">
+            <span class="star full">★</span><span class="star full">★</span><span class="star half">★</span><span class="star empty">★</span><span class="star empty">★</span>
+          </div>
+          <p class="yelp-review-title">Overrated. Overhyped. Overpriced.</p>
+          <p class="yelp-review-body">The food was mid. But after the meal 🫣? 5 stars.</p>
+          <div class="photo-single photo-slide-up photo-tappable" data-caption="Flair — overrated but we had fun">
+            <img src="assets/photos/flair.jpg" alt="Flair" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 11. Underrated — Shanghai -->
+    <div class="section slide-section">
+      <div class="slide-content">
+        <div class="yelp-card">
+          <div class="yelp-badge">VERIFIED REVIEW</div>
+          <p class="ranking-badge">#1 Most Underrated Date</p>
+          <h2 class="title yelp-title">Shanghai</h2>
+          <p class="small-text">Early 2024</p>
+          <div class="star-rating" data-stars="5" aria-label="5 out of 5 stars">
+            <span class="star full">★</span><span class="star full">★</span><span class="star full">★</span><span class="star full">★</span><span class="star full">★</span>
+          </div>
+          <p class="yelp-review-title">A lot of exploration. Would recommend.</p>
+          <p class="yelp-review-body">Well planned. No pressure.</p>
+          <p class="ranking-score">Happiness level: 1105%</p>
+          <div class="photo-trio polaroid-stack">
+            <div class="photo-cell polaroid-cell" data-caption="Shanghai memory"><img src="assets/photos/shanghai1.jpg" alt="Shanghai" loading="lazy"></div>
+            <div class="photo-cell center polaroid-cell" data-caption="Shanghai 2024"><img src="assets/photos/shanghai2.jpg" alt="Shanghai" loading="lazy"></div>
+            <div class="photo-cell polaroid-cell" data-caption="Us in Shanghai"><img src="assets/photos/shanghai3.jpg" alt="Shanghai" loading="lazy"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 12. Pivot: "But you know what?" -->
+    <div class="section slide-section slide-pivot">
+      <div class="slide-content">
+        <p class="pivot-text">But you know what?</p>
+      </div>
+    </div>
+
+    <!-- 13. Pivot: "None of that matters." -->
+    <div class="section slide-section slide-pivot">
+      <div class="slide-content">
+        <p class="pivot-text">None of that matters.</p>
+      </div>
+    </div>
+
+    <!-- 14. Building D -->
+    <div class="section slide-section slide-emotional">
+      <div class="slide-content line-by-line">
+        <p class="body-text line">Among all the places we've been</p>
+        <p class="body-text line">I just wish I could spend</p>
+        <p class="body-text line">one more night with you</p>
+        <p class="body-text line">in your room</p>
+        <p class="body-text line">in Building D</p>
+      </div>
+      <div class="emotional-overlay"></div>
+    </div>
+
+    <!-- 15. Every moment -->
+    <div class="section slide-section">
+      <div class="slide-content">
+        <p class="body-text">Every moment with you</p>
+        <p class="body-text">is my favorite moment</p>
+      </div>
+    </div>
+
+    <!-- 16. Song intro -->
+    <div class="section slide-section">
+      <div class="slide-content">
+        <p class="body-text song-intro-text">Lastly, to wrap up our 3 years,...</p>
+      </div>
+    </div>
+
+    <!-- 17. Vinyl player -->
+    <div class="section slide-section">
+      <div class="slide-content">
+        <p class="body-text">I made a song for us</p>
+        <div class="lang-toggle" id="lang-toggle">
+          <button type="button" class="lang-btn active" data-lang="en">English</button>
+          <button type="button" class="lang-btn" data-lang="kr">Korean</button>
+        </div>
+        <div class="player-scene">
+          <div class="album-cover" id="album-cover">
+            <img id="album-cover-img" src="assets/photos/album_eng.png" alt="Our album" onerror="this.style.display='none'">
+            <span class="album-placeholder" id="album-label">Our Song (EN)</span>
+          </div>
+          <div class="turntable">
+            <div class="needle-arm" id="needle-arm"><div class="needle"></div></div>
+            <div class="vinyl" id="vinyl"><div class="vinyl-label" id="vinyl-label"></div><div class="vinyl-center"></div></div>
+            <button type="button" class="play-btn" id="play-btn" aria-label="Play song">
+              <span class="play-icon">▶</span>
+            </button>
+          </div>
+          <canvas class="visualizer" id="visualizer" width="300" height="60" aria-hidden="true"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- 18. Subscription Renewal -->
+    <div class="section slide-section slide-renewal-section">
+      <div class="slide-content" id="renewal-content">
+        <h2 class="renewal-heading" id="renewal-heading">Your 3-Year Plan has expired.</h2>
+        <p class="renewal-sub" id="renewal-sub">Would you like to renew?</p>
+        <div class="renewal-buttons" id="renewal-buttons">
+          <button type="button" class="btn-renew" id="btn-renew">Renew for 3 more years</button>
+          <button type="button" class="btn-cancel" id="btn-cancel">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Photo expand modal -->
+  <div class="photo-modal" id="photo-modal" role="dialog" aria-modal="true" aria-label="Photo view">
+    <div class="photo-modal-backdrop"></div>
+    <div class="photo-modal-content">
+      <button type="button" class="photo-modal-close" aria-label="Close">&times;</button>
+      <img src="" alt="" class="photo-modal-img">
+      <p class="photo-modal-caption"></p>
+    </div>
+  </div>
+
+  <!-- Hidden memory (shake) -->
+  <div class="hidden-memory-overlay" id="hidden-memory" aria-hidden="true">
+    <div class="hidden-memory-content">
+      <p class="hidden-memory-title">You unlocked a hidden memory!</p>
+      <div class="hidden-memory-photo"><img src="assets/photos/hidden.jpg" alt="Hidden memory" onerror="this.parentElement.innerHTML='✨'"></div>
+      <button type="button" class="hidden-memory-close">Close</button>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
